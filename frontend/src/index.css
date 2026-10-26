@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: #12141c;
+  color: #f4f2ec;
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+/* Display 16:9: 1em = 1% della larghezza dello stage, quindi tutto scala con la finestra */
+.stage {
+  position: relative;
+  width: min(100vw, 177.7778vh);
+  height: min(56.25vw, 100vh);
+  font-size: min(1vw, 1.77778vh);
+  overflow: hidden;
+}
+
+@keyframes eq { 0%,100% { transform: scaleY(.25); } 50% { transform: scaleY(1); } }
+.eq-bar { transform-origin: bottom; animation: eq 900ms ease-in-out infinite; }
+
+@keyframes pop { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.pop { animation: pop 260ms ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .eq-bar, .pop { animation: none; }
+  * { transition-duration: 0ms !important; }
+}
+
+:focus-visible { outline: 3px solid #ffd23f; outline-offset: 2px; }

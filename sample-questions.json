@@ -1,0 +1,7 @@
+[
+  {"text":"Qual è il capoluogo dell'Emilia-Romagna?","mediaType":"None","mediaUrl":null,"correctLabel":"B","explanation":"Bologna è il capoluogo regionale.","options":[{"label":"A","text":"Parma"},{"label":"B","text":"Bologna"},{"label":"C","text":"Modena"},{"label":"D","text":"Ferrara"}]},
+  {"text":"Quale pianeta è noto come il Pianeta Rosso?","mediaType":"None","mediaUrl":null,"correctLabel":"C","explanation":"Marte deve il colore all'ossido di ferro.","options":[{"label":"A","text":"Venere"},{"label":"B","text":"Giove"},{"label":"C","text":"Marte"},{"label":"D","text":"Mercurio"}]},
+  {"text":"Chi dipinse la Gioconda?","mediaType":"None","mediaUrl":null,"correctLabel":"A","explanation":null,"options":[{"label":"A","text":"Leonardo da Vinci"},{"label":"B","text":"Raffaello"},{"label":"C","text":"Michelangelo"},{"label":"D","text":"Caravaggio"}]},
+  {"text":"Quanti sono i lati di un esagono?","mediaType":"None","mediaUrl":null,"correctLabel":"D","explanation":null,"options":[{"label":"A","text":"Cinque"},{"label":"B","text":"Sette"},{"label":"C","text":"Otto"},{"label":"D","text":"Sei"}]},
+  {"text":"In che anno l'Italia ha vinto l'ultimo Mondiale di calcio?","mediaType":"None","mediaUrl":null,"correctLabel":"B","explanation":"Germania 2006, finale contro la Francia.","options":[{"label":"A","text":"1982"},{"label":"B","text":"2006"},{"label":"C","text":"1994"},{"label":"D","text":"2010"}]}
+]

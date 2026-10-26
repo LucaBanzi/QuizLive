@@ -1,0 +1,50 @@
+name: quizlive
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: quizlive
+      POSTGRES_USER: quiz
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U quiz -d quizlive"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__Default: Host=db;Port=5432;Database=quizlive;Username=quiz;Password=${POSTGRES_PASSWORD}
+      Admin__Password: ${ADMIN_PASSWORD}
+      Jwt__Secret: ${JWT_SECRET}
+      Quiz__PublicOrigin: ${PUBLIC_ORIGIN}
+      Quiz__MaxTeams: 60
+      Media__Path: /app/media
+    volumes:
+      - media:/app/media
+    expose:
+      - "8080"
+
+  web:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      # solo loopback: Funnel e il Display sul laptop si collegano qui.
+      # Per accesso da altri dispositivi della LAN usare "8080:80"
+      - "127.0.0.1:8080:80"
+
+volumes:
+  pgdata:
+  media:
